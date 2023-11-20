@@ -10,8 +10,8 @@ In this assignment we will create a Student Django Model with the following fiel
 | field            | required |type |example data                    |
 | ----------------- | -----|-------|------------- |
 | name | True |string | John W. Watson |
-| student_email | True | string | johnnyBoy@school.com |
-| personal_email | False | string | johnnyBoy@gmail.com |
+| student_email | True | string(email) | johnnyBoy@school.com |
+| personal_email | False | string(email) | johnnyBoy@gmail.com |
 | locker_number | True |int |137 |
 | locker_combination | True |string |37-68-98 |
 | good_student | True |boolean | True |
