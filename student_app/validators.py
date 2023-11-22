@@ -14,7 +14,7 @@ def validate_name_format(name):
 
 
 def validate_school_email(email):
-    regex = re.compile(r'^[a-zA-Z0-9._%+-]+@school\.com$')
+    regex = re.compile(r"^[a-zA-Z0-9._%+-]+@school\.com$")
     errorMessage = "Validation Error: 'Invalid school email format. Please use an email ending with '@school.com'"
     if regex.fullmatch(email):
         return email
@@ -23,9 +23,17 @@ def validate_school_email(email):
 
 
 def validate_combination_format(combo):
-    regex = re.compile(r'^\d{2}-\d{2}-\d{2}$')
+    regex = re.compile(r"^\d{2}-\d{2}-\d{2}$")
     errorMessage = "Validation Error: 'Combination must be in the format '12-12-12'"
     if regex.fullmatch(combo):
         return combo
     else:
         raise ValidationError(errorMessage, params={"combo": combo})
+
+
+def validate_subjects(subjects):
+    errorMessage = "This student's class schedule is full!"
+    if 0 < len(subjects) < 8:
+        return subjects
+    else:
+        raise ValidationError(errorMessage, params={"subjects": subjects})

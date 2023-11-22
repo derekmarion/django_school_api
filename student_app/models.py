@@ -17,6 +17,7 @@ class Student(models.Model):
     )
     locker_combination = models.CharField(default="12-12-12", unique=False, validators=[validate_combination_format])
     good_student = models.BooleanField(default=True, unique=False)
+    subjects = models.ManyToManyField(unique=False, default=None, related_name=students, validators=[v.MinLengthValidator(0), v.MaxLengthValidator(8)])
 
     def __str__(self) -> str:
         return f"{self.name} - {self.student_email} - {self.locker_number}"
@@ -38,3 +39,6 @@ class Student(models.Model):
     def update_good_student(self, new_status):
         self.good_student = new_status
         self.save()
+
+    def add_subject(subject_id):
+
