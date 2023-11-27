@@ -414,9 +414,9 @@ class Test_student(TestCase):
             a_subject.full_clean()
             self.fail()
         except ValidationError as e:
-            # print(e.message_dict)
+            print(e.message_dict)
             self.assert_(
-                "Subject must be in title case format."
+                'Subject must be in title case format.'
                 in e.message_dict["subject_name"]
             )
 
