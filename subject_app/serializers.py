@@ -14,5 +14,5 @@ class SubjectSerializer(serializers.ModelSerializer):
         return obj.students.count()
     
     def get_grade_average(self, obj):
-        grades = obj.gradel.all()
+        grades = obj.grades.all()
         return round(sum([x.grade for x in grades]/len(grades), 2))
