@@ -9,5 +9,5 @@ from rest_framework.response import Response
 
 class All_students(APIView):
     def get(self, request):
-        students = StudentAllSerializer(Student.object.order_by("id"), many=True)
+        students = StudentAllSerializer(Student.objects.order_by("id"), many=True)
         return Response(students.data)
