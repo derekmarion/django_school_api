@@ -12,5 +12,5 @@ class Grade(models.Model):
         max_digits=5,
         validators=[v.MinValueValidator(0.00), v.MaxValueValidator(100.00)],
     )
-    a_subject = models.ForeignKey("subject_app.Subject", on_delete=models.CASCADE)
-    student = models.ForeignKey("student_app.Student", on_delete=models.CASCADE)
+    a_subject = models.ForeignKey("subject_app.Subject", related_name="grades", on_delete=models.SET_NULL, null=True)
+    student = models.ForeignKey("student_app.Student", related_name="grades", on_delete=models.SET_NULL, null=True)
