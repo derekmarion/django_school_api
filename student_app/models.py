@@ -26,11 +26,11 @@ class Student(models.Model):
     )
     good_student = models.BooleanField(default=True, unique=False)
     subjects = models.ManyToManyField(
-        'subject_app.Subject',
+        "subject_app.Subject",
         unique=False,
         default=None,
-        related_name="students",
-    )
+        related_name="enrolled_students",  # related_name defines how this object will be accessed by related models in the m2m relation
+    )  # e.g. ex_subject.enrolled_students.all()
 
     def __str__(self) -> str:
         return f"{self.name} - {self.student_email} - {self.locker_number}"
