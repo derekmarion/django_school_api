@@ -18,7 +18,7 @@ class Subject(models.Model):
         validators=[validate_professor_name],
     )
     students = models.ManyToManyField(
-        'student_app.Student', unique=False, null=False, default=None, related_name='subjects', validators=[validate_class_capacity]
+        'student_app.Student', unique=False, default=None, related_name='subjects'
     )
 
     def __str__(self) -> str:

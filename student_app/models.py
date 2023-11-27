@@ -29,7 +29,6 @@ class Student(models.Model):
         'subject_app.Subject',
         unique=False,
         default=None,
-        validators=[validate_subjects],
         related_name="students",
     )
 
