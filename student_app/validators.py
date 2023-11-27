@@ -29,11 +29,3 @@ def validate_combination_format(combo):
         return combo
     else:
         raise ValidationError(errorMessage, params={"combo": combo})
-
-
-def validate_subjects(subjects):
-    errorMessage = "This student's class schedule is full!"
-    if 0 < len(subjects) < 8:
-        return subjects
-    else:
-        raise ValidationError(errorMessage, params={"subjects": subjects})
