@@ -377,7 +377,7 @@ class Test_student(TestCase):
             self.fail()
         except Exception as e:
             # print(e)
-            self.assertEquals("['This students class schedule is empty!']", str(e))
+            self.assertEquals('This students class schedule is empty!', str(e))
 
     def test_021_student_with_too_many_classes(self):
         try:
