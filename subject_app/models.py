@@ -25,9 +25,9 @@ class Subject(models.Model):
         return f"{self.subject_name}-{self.professor}-{len(self.students)}"
 
     def add_a_student(self, student_id):
-        if validate_class_capacity:
+        if validate_class_capacity(self.students):
             self.students.add(student_id)
 
     def drop_a_student(self, student_id):
-        if validate_class_capacity:
+        if validate_class_capacity(self.students, drop=True):
             self.students.remove(student_id)
