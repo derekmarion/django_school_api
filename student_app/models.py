@@ -5,8 +5,6 @@ from .validators import (
     validate_school_email,
     validate_combination_format,
 )
-from subject_app.validators import validate_subjects
-from subject_app.models import Subject
 
 
 # Create your models here.
@@ -54,11 +52,15 @@ class Student(models.Model):
         self.save()
 
     def add_subject(self, subject_id):
-        new_subject = validate_subjects(self.subjects)
-        if new_subject:
+        subject_length = self.subjects.count()
+        if subject_length < 8:
             self.subjects.add(subject_id)
+        else:
+            raise Exception("This students class schedule is full!")
 
     def remove_subject(self, subject_id):
-        subject_to_remove = validate_subjects(self.subjects)
-        if subject_to_remove:
+        subject_length = self.subjects.count()
+        if subject_length > 0:
             self.subjects.remove(subject_id)
+        else:
+            raise Exception("This students class schedule is empty!")
