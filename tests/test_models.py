@@ -317,7 +317,7 @@ class Test_student(TestCase):
             },
         )
 
-    d def test_018_student_serializer_all_with_proper_data(self):
+    def test_018_student_serializer_all_with_proper_data(self):
         try:
             # Subject.objects.create(subject_name="Python", professor="Professor Adam")
             data = {
