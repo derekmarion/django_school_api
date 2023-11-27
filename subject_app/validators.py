@@ -33,9 +33,12 @@ def validate_professor_name(professor):
 def validate_class_capacity(students):
     errorMessageFull = "This subject is full!"
     errorMessageEmpty = "This subject is empty!"
-    if 0 < len(students) < 31:
+
+    student_list = list(students.all())  #Must convert to list since you can't check length of ManyRelatedManager object
+
+    if 0 < len(student_list) < 31:
         return students
-    elif len(students) < 1:
+    elif len(student_list) < 1:
         raise ValidationError(errorMessageEmpty, params={"students": students})
-    elif len(students) > 31:
+    elif len(student_list) > 30:
         raise ValidationError(errorMessageFull, params={"students": students})
