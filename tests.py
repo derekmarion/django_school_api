@@ -335,7 +335,7 @@ class Test_student(TestCase):
             print(serializer.errors)
 
     def test_019_student_serializer_all_with_proper_reponse(self):
-        # Subject.objects.create(subject_name = "Python", professor = "Professor Adam")
+        Subject.objects.create(subject_name="Python", professor="Professor Adam")
         stud = Student(
             **{
                 "name": "John W. Watson",
@@ -377,7 +377,7 @@ class Test_student(TestCase):
             self.fail()
         except Exception as e:
             # print(e)
-            self.assertEquals("This students class schedule is empty!", str(e))
+            self.assertEquals("['This students class schedule is empty!']", str(e))
 
     def test_021_student_with_too_many_classes(self):
         try:
