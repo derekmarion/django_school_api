@@ -19,7 +19,7 @@ class Subject(models.Model):
     # related field students mtm field from Student model
 
     def __str__(self) -> str:
-        return f"{self.subject_name}-{self.professor}-{len(self.students)}"
+        return f"{self.subject_name}-{self.professor}-{self.students.count()}"
 
     def add_a_student(self, student_id):
         if self.students.count() < 31:
