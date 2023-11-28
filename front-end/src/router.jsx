@@ -20,7 +20,7 @@ const router = createBrowserRouter([
         element: <Subjects/>,
       },
       {
-        path: "subject",
+        path: "subjects/:id", //Dynamic url for specific subject
         element: <ASubject />,
       },
       {
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
         element: <Students />,
       },
       {
-        path: "students/:id", //Dynamic url
+        path: "students/:id", //Dynamic url for specific student
         element: <AStudent />,
       }
     ],

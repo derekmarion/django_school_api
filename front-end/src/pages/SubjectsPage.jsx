@@ -1,9 +1,12 @@
 import Row from "react-bootstrap/esm/Row";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Button from 'react-bootstrap/Button';
+import { useNavigate } from "react-router-dom";
 
 export const Subjects = () => {
   const [subjects, setSubjects] = useState([]);
+  const navigate = useNavigate();
 
   const getAllSubjects = async () => {
     let response = await axios
@@ -15,6 +18,11 @@ export const Subjects = () => {
     console.log(response);
     setSubjects(response.data);
   };
+
+
+  const handleButtonClick = (name) => {
+    navigate(`/subjects/${name}/`);
+}
 
   useEffect(() => {
     getAllSubjects();
@@ -36,9 +44,7 @@ export const Subjects = () => {
             }}
           >
             Subject: {subject.subject_name} <br />
-            Professor: {subject.professor} <br />
-            Students: {subject.students} <br />
-            Grade Average: {subject.grade_average} <br />
+            <Button onClick={()=>handleButtonClick(subject.subject_name)}>More Details</Button>
           </li>
         ))}
       </ul>
