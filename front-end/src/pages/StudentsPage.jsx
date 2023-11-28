@@ -1,9 +1,13 @@
 import Row from "react-bootstrap/esm/Row";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
+
 
 export const Students = () => {
   const [students, setStudents] = useState([]);
+  const navigate = useNavigate();
 
   const getAllStudents = async () => {
     let response = await axios
@@ -20,12 +24,16 @@ export const Students = () => {
     getAllStudents();
   }, []);
 
+  const handleButtonClick = (id) => {
+    navigate(`/students/${id}/`);
+}
+
   return (
     <Row style={{ textAlign: "center", padding: "0 10vmin" }}>
       <h1>Students</h1>
       <ul>
         {students.map((student) => (
-          // iterates through the list of pokemon to render a li for each student within our database
+          // iterates through the list of students to render a li for each student within our database
           <li
             key={student.id}
             // use the student's id as the key for each "li" element
@@ -36,8 +44,7 @@ export const Students = () => {
             }}
           >
             Name: {student.name} <br />
-            Student Email: {student.student_email} <br />
-            Locker #: {student.locker_number}
+            <Button onClick={()=>handleButtonClick(student.id)}>More Details</Button>
           </li>
         ))}
       </ul>
