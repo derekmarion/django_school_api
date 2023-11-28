@@ -8,7 +8,7 @@ class SubjectSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Subject
-        fields = ['subject_name', 'professor', 'students', 'grade_average']
+        fields = ['subject_name', 'professor', 'students', 'grade_average', 'id']
 
     def get_students(self, obj):
         return obj.students.count()
