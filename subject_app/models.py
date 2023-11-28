@@ -2,7 +2,6 @@ from django.db import models
 from .validators import (
     validate_subject_format,
     validate_professor_name,
-    validate_class_capacity,
 )
 
 
@@ -17,17 +16,19 @@ class Subject(models.Model):
         default="Mr. Cahan",
         validators=[validate_professor_name],
     )
-    students = models.ManyToManyField(
-        'student_app.Student', unique=False, default=None
-    )
+    # related field students mtm field from Student model
 
     def __str__(self) -> str:
         return f"{self.subject_name}-{self.professor}-{len(self.students)}"
 
     def add_a_student(self, student_id):
-        if validate_class_capacity(self.students):
+        if self.students.count() < 31:
             self.students.add(student_id)
+        else:
+            raise Exception("This subject is full!")
 
     def drop_a_student(self, student_id):
-        if validate_class_capacity(self.students, drop=True):
+        if self.students.count() > 0:
             self.students.remove(student_id)
+        else:
+            raise Exception("This subject is empty!")
