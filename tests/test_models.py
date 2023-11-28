@@ -459,7 +459,7 @@ class Test_student(TestCase):
             self.fail()
         except Exception as e:
             # print(e)
-            self.assertEquals("['This subject is empty!']", str(e))
+            self.assertEquals("This subject is empty!", str(e))
 
     def test_025_Grade_with_proper_input(self):
         Subject.objects.create(subject_name="Math", professor="Professor Ben")
