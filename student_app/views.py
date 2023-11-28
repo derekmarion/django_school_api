@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 from .models import Student
@@ -11,3 +11,9 @@ class All_students(APIView):
     def get(self, request):
         students = StudentAllSerializer(Student.objects.order_by("id"), many=True)
         return Response(students.data)
+
+
+class A_student(APIView):
+    def get(self, request, id):
+        student = get_object_or_404(Student, id = id)
+        return Response(StudentAllSerializer(student).data)
