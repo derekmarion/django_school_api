@@ -28,7 +28,7 @@ const router = createBrowserRouter([
         element: <Students />,
       },
       {
-        path: "student",
+        path: "students/:id", //Dynamic url
         element: <AStudent />,
       }
     ],
